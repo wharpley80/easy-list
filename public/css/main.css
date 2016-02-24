@@ -1,0 +1,313 @@
+/*****************************
+			MAIN
+*****************************/
+
+html {
+  height: 100%;
+}
+
+.list-link {
+  font-family: 'Raleway', sans-serif;
+  font-size: 2em;
+  color: #fff;
+}
+
+.row {
+  margin-bottom: 40px;
+}
+
+body {
+  background-color: #e8e8e8;
+}
+
+h1 {
+  font-size: 70px;
+  font-family: 'Raleway', sans-serif;
+  color: #fff;
+}
+
+h2 {
+  text-align: center;
+}
+
+ol {
+  float: left;
+  margin: 0;
+  text-align: left;
+}
+
+.list-page {
+  background: 
+    linear-gradient(
+      rgba(142, 109, 180, 0.92), 
+      rgba(142, 109, 180, 0.92)
+    ),
+    url('../img/15419711-Light-Grey-Wall-Stucco-Texture-Detailed-Natural-Gray-Coarse-Rustic-Textured-Background-Concrete-Copy-Stock-Photo.jpg') repeat-y;
+  background-size: 100%;
+  text-align: center;
+  height: 100%;
+  margin: 50px 0 0 0;
+  padding: 10px 0 20px 0;
+}
+
+.list-name {
+  font-size: 40px;
+  font-family: 'Raleway', sans-serif;
+  color: #fff;
+}
+
+/*****************************
+      NAVBAR
+*****************************/
+
+.navbar {
+  background-color: #000;
+  border-color: #000;
+}
+
+h3.navbar-text {
+  color: #fff;
+}
+
+a.navbar-text:hover {
+  color: #fff;
+}
+
+/*****************************
+      JUMBOTRON
+*****************************/
+
+.jumbotron {
+  color: #fff;
+  font-weight: bold;
+  background: 
+    linear-gradient(
+      rgba(142, 109, 180, 0.92), 
+      rgba(142, 109, 180, 0.92)
+    ),
+    url('../img/6a00d83451b3d969e201538f57d22f970b-500wi.jpg') no-repeat;
+  background-size: 100%;
+  padding: 100px 100px 100px 50px;
+}
+
+.device {
+  width: 300px;
+  height: 400px;
+  background: url('../img/fVxCxjG.jpg') no-repeat;
+  background-size: 100%;
+  float: none;
+  margin: 0 auto;
+}
+
+.lead {
+  color: #c8c8c8;
+}
+
+/*****************************
+      BUTTONS
+*****************************/
+
+.btn-default {
+  background-color: rgba(0,0,0,0);
+  border-width: 2px;
+  color: #c8c8c8;
+  border-color: inherit;
+  margin: 5px;
+  padding: 12px 22px;
+}
+
+.btn-default:hover {
+  background-color: #fff;
+  color: #957bba;
+  border-color: #fff;
+}
+
+.delete-form {
+  display: inline-block;
+}
+
+/*****************************
+      MODAL
+*****************************/
+
+.modal-dialog {
+  text-align: center;
+}
+/*
+.modal.in {
+   display:block;
+}
+*/
+/*****************************
+      GLYPHICON
+*****************************/
+
+.glyphicon {
+  font-size: 3em;
+  display: block;
+  text-align: center;
+  color: #6495ed;
+}
+
+span.glyphicon {
+  font-size: inherit;
+  color: inherit;
+  display: inline;
+  padding-right: 10px;
+}
+
+/*****************************
+			NOTEPAD BACKGROUND
+*****************************/
+
+.paper {
+  font: normal 12px/1.5 "Lucida Grande", arial, sans-serif;
+  height: 100%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  padding: 6px 5px 4px 42px;
+  position: relative;
+  color: #444;
+  line-height: 20px;
+  border: 1px solid #d2d2d2;
+  background: #fff;
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(#d9eaf3), color-stop(4%, #fff)) 0 4px;
+  background: -webkit-linear-gradient(top, #d9eaf3 0%, #fff 8%) 0 4px;
+  background: -moz-linear-gradient(top, #d9eaf3 0%, #fff 8%) 0 4px;
+  background: -ms-linear-gradient(top, #d9eaf3 0%, #fff 8%) 0 4px;
+  background: -o-linear-gradient(top, #d9eaf3 0%, #fff 8%) 0 4px;
+  background: linear-gradient(top, #d9eaf3 0%, #fff 8%) 0 4px;
+  -webkit-background-size: 100% 20px;
+  -moz-background-size: 100% 20px;
+  -ms-background-size: 100% 20px;
+  -o-background-size: 100% 20px;
+  background-size: 100% 20px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 10px 10px 5px #000;
+  -moz-box-shadow: 10px 10px 5px #000;
+  box-shadow: 10px 10px 5px #000;
+  width: 35%;
+  height: 500px;
+  overflow-y: auto;
+}
+
+.paper::before {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 400%;
+  top: 0;
+  left: 30px;
+  bottom: 0;
+  border: 1px solid;
+  border-color: transparent #efe4e4;
+}
+
+/*****************************
+			INPUT/LINKS
+*****************************/
+
+label {
+	font-size: 20px;
+}
+
+.my-label {
+  font-size: 20px;
+  font-family: 'Raleway', sans-serif;
+  color: #fff;
+}
+
+input {
+   border-bottom-color: #778899;
+   border-bottom-style: solid;
+   border-bottom-width: 1px;
+   border-left-color: #778899;
+   border-left-style: solid;
+   border-left-width: 1px;
+   border-right-color: #778899;
+   border-right-style: solid;
+   border-right-width: 1px;
+   border-top-color: #778899;
+   border-top-style: solid;
+   border-top-width: 1px;
+   margin: 0;
+   width: 110px;
+}
+
+select {
+  width: 110px;
+}
+
+#submit {
+  background-color: #6495ed;
+  border-color: #000;
+}
+
+#submit:hover {
+  background-color: #000;
+  border-color: #000;
+}
+
+.byebye {
+	color: #6495ed;
+  padding-left: 10px;
+}
+
+.byebye:hover {
+  color: #ee1289;
+}
+
+/*****************************
+			FOOTER
+*****************************/
+
+footer {
+  height: 150px;
+  text-align: center;
+}
+
+.social-icon {
+	height: 60px;
+	width: 60px;
+	position:relative;
+	margin-top: 100px;
+}
+
+#twitter {
+  height: 40px;
+  width: 40px;
+  padding-bottom: 10px;
+}
+
+.designer {
+  display: inline-block;
+  margin-top: 140px;
+  color: #000;
+}
+
+.designer:hover {
+  color: #9273B5;
+}
+
+/*****************************
+			MEDIA QUERIES
+*****************************/
+
+@media (max-width: 800px) {
+
+  .jumbotron {
+    background: 
+      linear-gradient(
+        rgba(142, 109, 180, 0.95), 
+        rgba(142, 109, 180, 0.95)
+      ),
+      url('../img/15419711-Light-Grey-Wall-Stucco-Texture-Detailed-Natural-Gray-Coarse-Rustic-Textured-Background-Concrete-Copy-Stock-Photo.jpg') repeat-y;
+    background-size: 100%;
+  }
+
+  .paper {
+    width: 70%;
+  }
+}
