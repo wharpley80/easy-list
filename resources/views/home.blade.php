@@ -24,26 +24,12 @@
         @endforeach
       </div>
     </div>
-    <div class="modal fade modal" id="editName">
-      <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Enter your new Username.</h4>
-          </div>
-          <div class="modal-body">
-            <form class="signin-form" method="POST">
-              <div class="form-group">
-                <input type="text" class="form-control-sm" name="rename" id="rename" autofocus="autofocus" placeholder="New Username">
-              </div>
-              <input type="submit" name="signin" class="btn btn-primary" value="Rename">
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="container">
-      <a class="btn btn-default btn-sm" href="#editName" data-toggle="modal">Edit Username</a>
+      {{ link_to_route('users.edit', 'Edit UserName', [Auth::user()->id], ['class' => 'btn btn-default btn-sm']) }}
+
+      {!! Form::model(Auth::user(), [ 'route' => [ 'users.destroy', Auth::user()->id ], 'method' => 'delete', 'class' => 'delete-form' ]) !!}
+        {!! Form::button('<span class="glyphicon glyphicon-trash"></span>Delete My Account', ['type' => 'submit', 'class' => 'btn btn-default btn-sm', 'id' => 'deleteName']) !!}
+      {!! Form::close() !!}
       <a href="#" class="btn btn-default btn-md" id="deletename">Delete My Account</a>
     </div>
   </div>

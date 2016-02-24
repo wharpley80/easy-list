@@ -111,6 +111,44 @@ $(function() {
     }
   });
 
+  // Tooltipster Validation for Editing a Username
+  $('.edit-name input[type="text"]').tooltipster({ 
+    trigger: 'custom', // default is 'hover' which is no good here
+    onlyOne: false,    // allow multiple tips to be open at a time
+    position: 'right'  // display the tips to the right of the element
+  });
+
+  $(".edit-name").validate({
+    rules: {
+      name: {
+        required: true,
+        minlength: 5
+      }
+    },  
+    messages: {
+      name: {
+        required: "Enter Name", 
+        minlength: "5 Characters Required"    
+      }
+    },
+
+    errorPlacement: function (error, element) {
+      $(element).tooltipster('update', $(error).text());
+      $(element).tooltipster('show');
+    },
+    success: function (label, element) {
+      $(element).tooltipster('hide');
+    }
+  });
+
+  $(window).load(function(){
+    $('#authorize').modal('show');
+  });
+
+  $(window).load(function(){
+    $('#register').modal('show');
+  });
+
   $(window).load(function(){
     $('#createList').modal('show');
   });
@@ -120,14 +158,17 @@ $(function() {
   });
 
   $(window).load(function(){
-    $('#authorize').modal('show');
+    $('#editName').modal('show');
   });
 
-    $(window).load(function(){
-    $('#register').modal('show');
+  // Deletes a User's Account
+  $('#deleteName').on('click', function(event) {
+    if (!confirm("Are you sure you want to Delete your Account?")) {
+      event.preventDefault();
+    }
   });
 
-  // Deletes a Specific List.
+  // Deletes a Specific List
   $('#deleteList').on('click', function(event) {
     if (!confirm("Are you sure you want to Delete this List?")) {
       event.preventDefault();

@@ -32,7 +32,7 @@ Route::group(['middleware' => 'web'], function () {
 		});
 
     Route::get('/home', 'HomeController@index');
-
+    Route::resource('users', 'UsersController');
     Route::resource('lists', 'ListsController');
 
 /*

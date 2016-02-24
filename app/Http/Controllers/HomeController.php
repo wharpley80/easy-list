@@ -12,15 +12,13 @@ use Validator;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\ViewErrorBag;
 
-class HomeController extends Controller
-{
+class HomeController extends Controller  {
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('auth');
     }
 
@@ -29,14 +27,13 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-            $mylists = \App\Lists::orderBy('list', 'asc')
-      ->get()
-      ->where('user_id', Auth::user()->id);
-      //->lists('list');
+    public function index() {
+          
+      $mylists = \App\Lists::orderBy('list', 'asc')
+        ->get()
+        ->where('user_id', Auth::user()->id);
 
-    return view('home')->with('mylists', $mylists);
+      return view('home')->with('mylists', $mylists);
     }
 
     
