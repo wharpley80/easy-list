@@ -85,7 +85,7 @@ $(function() {
   });
 
  // Initialize tooltipster on item-form input/password elements
-  $('.item-form select').tooltipster({ 
+  $('.item-form input[type="text"]').tooltipster({ 
     trigger: 'custom', // default is 'hover' which is no good here
     onlyOne: false,    // allow multiple tips to be open at a time
     position: 'right'  // display the tips to the right of the element
@@ -121,14 +121,40 @@ $(function() {
   $(".edit-name").validate({
     rules: {
       name: {
-        required: true,
-        minlength: 5
+        required: true
       }
     },  
     messages: {
       name: {
-        required: "Enter Name", 
-        minlength: "5 Characters Required"    
+        required: "Enter Email"     
+      }
+    },
+
+    errorPlacement: function (error, element) {
+      $(element).tooltipster('update', $(error).text());
+      $(element).tooltipster('show');
+    },
+    success: function (label, element) {
+      $(element).tooltipster('hide');
+    }
+  });
+
+  // Tooltipster Validation for Share Email
+  $('.share-email input[type="email"]').tooltipster({ 
+    trigger: 'custom', // default is 'hover' which is no good here
+    onlyOne: false,    // allow multiple tips to be open at a time
+    position: 'right'  // display the tips to the right of the element
+  });
+
+  $(".share-email").validate({
+    rules: {
+      email: {
+        required: true
+      }
+    },  
+    messages: {
+      email: {
+        required: "Enter Email"
       }
     },
 
@@ -151,6 +177,10 @@ $(function() {
 
   $(window).load(function(){
     $('#createList').modal('show');
+  });
+
+  $(window).load(function(){
+    $('#shareList').modal('show');
   });
 
   $(window).load(function(){

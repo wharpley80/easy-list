@@ -2,6 +2,7 @@
 
 namespace App;
 
+
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -23,4 +24,21 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+  public function mylisting() {
+
+    return $this->hasMany('App\MyList')->orderBy('list', 'asc');
+  }
+
+  public function shares() {
+    
+    return $this->morphMany('App\Share', 'shareable');
+  
+  }
+
+
+
 }
+
+
+

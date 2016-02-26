@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
 use Input;
 use App\User;
-use App\Lists;
+//use App\Users;
+use App\MyList;
+use App\Share;
 use Auth;
 use Validator;
 use Illuminate\Support\MessageBag;
@@ -28,12 +31,15 @@ class HomeController extends Controller  {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-          
-      $mylists = \App\Lists::orderBy('list', 'asc')
+      $user = User::findOrFail(Auth::user()->id);
+        
+      $mylists = \App\MyList::orderBy('list', 'asc')
         ->get()
         ->where('user_id', Auth::user()->id);
-
+/*
       return view('home')->with('mylists', $mylists);
+      */
+      return view('home')->with('user', $user)->with('mylists', $mylists);
     }
 
     

@@ -32,8 +32,12 @@ Route::group(['middleware' => 'web'], function () {
 		});
 
     Route::get('/home', 'HomeController@index');
-    Route::resource('users', 'UsersController');
-    Route::resource('lists', 'ListsController');
+    Route::resource('users', 'UserController');
+    Route::resource('shares', 'ShareController');
+    Route::get('lists/{id}/shares' , [
+    	'as' => 'lists.share', 'uses' => 'MyListController@share'
+		]);
+    Route::resource('lists', 'MyListController');
 
 /*
     Route::get('/select', [

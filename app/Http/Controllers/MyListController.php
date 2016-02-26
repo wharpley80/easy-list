@@ -7,23 +7,26 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Input;
 use App\User;
-use App\Lists;
+//use App\Users;
+use App\MyList;
+use App\Share;
 use Auth;
 use Validator;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\ViewErrorBag;
 
-class ListsController extends Controller
-{
+class MyListController extends Controller  {
 
 	public function index() {
 
-
   	return view('home');
+
 	}
 
   public function create() {
+
   	return view('lists.create');
+
 	}
 
   public function store(Request $request) {
@@ -33,23 +36,25 @@ class ListsController extends Controller
     ]);
 
     if ($validator->fails()) {
+
       return redirect('/')->withErrors($validator)->withInput();
+
     }
 
     $list = $request->input('list');
     $user_id = Auth::user()->id;
-    $insert = new \App\Lists();
+    $insert = new \App\MyList();
     $insert->user_id = $user_id;
     $insert->list = $list;
     $insert->save();
 
-    $newlist = \App\Lists::all();
+    $newlist = \App\MyList::all();
 
     foreach ($newlist as $new) {
       $newid = $new->id;
     }
 
-    $list = Lists::findOrFail($newid);	
+    $list = MyList::findOrFail($newid);	
 
     return view('lists.show', [$newid])->withList($list);
 
@@ -57,7 +62,7 @@ class ListsController extends Controller
 
   public function show($id)	{
 
-  	$list = Lists::findOrFail($id);
+  	$list = MyList::findOrFail($id);
 		//$items = $list->listItems()->get();
 		return view('lists.show')
 		->withList($list);
@@ -76,7 +81,7 @@ class ListsController extends Controller
 
   public function edit($id)	{
 
-  	$list = Lists::findOrFail($id);
+  	$list = MyList::findOrFail($id);
 
   	return view('lists.edit')->withList($list);
   }
@@ -93,26 +98,37 @@ class ListsController extends Controller
 
     $list = $request->input('list');
     $user_id = Auth::user()->id;
-    $insert = Lists::findOrFail($id);
+    $insert = MyList::findOrFail($id);
     $insert->user_id = $user_id;
     $insert->list = $list;
     $insert->update();
 
-    $newlist = \App\Lists::all();
+    $newlist = \App\MyList::all();
 
     foreach ($newlist as $new) {
     	$newid = $new->id;
     }
     
-    $list = Lists::findOrFail($newid);
+    $list = MyList::findOrFail($newid);
 
     return view('lists.show', [$newid])->withList($list);
   }
 
+  public function share($id)	{
+
+  	$list = MyList::findOrFail($id);
+		//$items = $list->listItems()->get();
+		return view('lists.share')->withList($list);
+
+  }
+
+
+
   public function destroy($id)	{
 
-  	$list = Lists::findOrFail($id)->delete();
+  	$list = MyList::findOrFail($id)->delete();
 		
 		return redirect('/home')->withMessage('List Deleted');
   }
+
 }

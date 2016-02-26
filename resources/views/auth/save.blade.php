@@ -1,10 +1,4 @@
-            {!! Form::open( array('route' => 'home.store', 'class' => 'signin-form') ) !!}
-              {!! csrf_field() !!}
-              <div class="form-group">
-                {!! Form::text('list', null, array('class' => 'list', 'class' => 'list', 'placeholder' => 'List Name', 'autofocus' => 'autofocus') ) !!}
-              </div>
-              {!! Form::submit('submit', array('class' => 'btn btn-primary') ) !!}
-            {!! Form::close() !!}
+
 
 
     <!-- home.blade
@@ -52,28 +46,6 @@
       @endforeach
     </div>-->
 
-        <div class="modal" id="selectList">
-      <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Select a List!</h4>
-          </div>
-          <div class="modal-body">
-          {!! Form::open( array('route' => array('lists.show', '1' ), 'class' => 'item-form') ) !!}
-            <select id="return" name="show-list" class="form-control input-lg">Select</option>
-              <option selected disabled>Select</option>
-                @foreach ($mylists as $lists)
-                  <option value="{{ $lists->list }}">{{ $lists->list }}</option>
-                @endforeach
-            </select>
-          </div>
-          <div class="modal-footer">
-            <input type="submit" class="btn btn-primary btn-sm" value="Select">
-          </div>
-          {!! Form::close() !!}
-        </div>
-      </div>
-    </div>
+
 
 
