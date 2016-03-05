@@ -2,7 +2,7 @@
 
 namespace App;
 
-
+use Auth;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -26,17 +26,25 @@ class User extends Authenticatable
     ];
 
   public function mylisting() {
-
     return $this->hasMany('App\MyList')->orderBy('list', 'asc');
   }
-
-  public function shares() {
-    
-    return $this->morphMany('App\Share', 'shareable');
-  
+/*
+  public function listid() {
+    return $this->hasMany('App\MyList')->where('user_id', Auth::user()->id)->where('id', 15);
+  }
+*/
+  public function shareList() {
+    return $this->belongsToMany('App\MyList', 'shares', 'share_id', 'shareable_id');
   }
 
+  public function myrole() {
+    return $this->hasMany('App\MyList')->where('user_id', Auth::user()->id);
+  }
 
+  public function roleShare()
+    {
+        return $this->morphMany('App\Share', 'shareable');
+    }
 
 }
 

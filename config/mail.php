@@ -16,6 +16,7 @@ return [
     */
 
     'driver' => env('MAIL_DRIVER', 'smtp'),
+    //'driver' => ('MAIL_DRIVER', 'smtp'),
 
     /*
     |--------------------------------------------------------------------------
@@ -29,6 +30,7 @@ return [
     */
 
     'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    //'host' => ('MAIL_HOST', 'smtp.gmail.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -42,6 +44,7 @@ return [
     */
 
     'port' => env('MAIL_PORT', 587),
+    //'port' => ('MAIL_PORT', 465),
 
     /*
     |--------------------------------------------------------------------------
@@ -54,7 +57,7 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
+    'from' => ['address' => 'wharpley@gmail.com', 'name' => 'myemail'],
 
     /*
     |--------------------------------------------------------------------------
@@ -68,6 +71,7 @@ return [
     */
 
     'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+    //'encryption' => ('MAIL_ENCRYPTION', 'tls'),
 
     /*
     |--------------------------------------------------------------------------
@@ -81,6 +85,7 @@ return [
     */
 
     'username' => env('MAIL_USERNAME'),
+    //'username' => ('MAIL_USERNAME'),
 
     /*
     |--------------------------------------------------------------------------
@@ -94,6 +99,7 @@ return [
     */
 
     'password' => env('MAIL_PASSWORD'),
+    //'password' => ('MAIL_PASSWORD'),
 
     /*
     |--------------------------------------------------------------------------
@@ -107,5 +113,7 @@ return [
     */
 
     'sendmail' => '/usr/sbin/sendmail -bs',
+
+    'pretend' => false,
 
 ];

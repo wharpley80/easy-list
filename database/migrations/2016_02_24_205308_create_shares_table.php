@@ -11,10 +11,10 @@ class CreateSharesTable extends Migration
      * @return void
      */
     public function up()
-    {
+    {/*
         Schema::create('shares', function (Blueprint $table) {
-$table->foreign('shareable_id')->references('id')->on('my_lists');
-        });
+            $table->foreign('shareable_id')->references('id')->on('my_lists');
+        });*/
     }
 
     /**
@@ -24,6 +24,6 @@ $table->foreign('shareable_id')->references('id')->on('my_lists');
      */
     public function down()
     {
-        Schema::drop('shares');
+      /*  Schema::drop('shares');*/
     }
 }

@@ -7,7 +7,6 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Input;
 use App\User;
-//use App\Users;
 use App\MyList;
 use App\Share;
 use Auth;
@@ -31,15 +30,18 @@ class HomeController extends Controller  {
      * @return \Illuminate\Http\Response
      */
     public function index() {
+
       $user = User::findOrFail(Auth::user()->id);
-        
-      $mylists = \App\MyList::orderBy('list', 'asc')
-        ->get()
-        ->where('user_id', Auth::user()->id);
-/*
-      return view('home')->with('mylists', $mylists);
-      */
-      return view('home')->with('user', $user)->with('mylists', $mylists);
+
+
+      return view('home')->with('user', $user);
+
+    }
+
+    public function profile() {
+
+      return view('profile');
+
     }
 
     

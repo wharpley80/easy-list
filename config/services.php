@@ -15,8 +15,10 @@ return [
     */
 
     'mailgun' => [
-        'domain' => env('MAILGUN_DOMAIN'),
-        'secret' => env('MAILGUN_SECRET'),
+        //'domain' => env('MAILGUN_DOMAIN'),
+        //'secret' => env('MAILGUN_SECRET'),
+    'domain' => 'easylistmaker.com',
+    'secret' => 'key-13b1ceb2bdee84c0c9c16e43ac7d02dd',
     ],
 
     'mandrill' => [

@@ -139,6 +139,34 @@ $(function() {
     }
   });
 
+  // Tooltipster Validation for Adding New List
+  $('.create-list input[type="text"]').tooltipster({ 
+    trigger: 'custom', // default is 'hover' which is no good here
+    onlyOne: false,    // allow multiple tips to be open at a time
+    position: 'right'  // display the tips to the right of the element
+  });
+
+  $(".create-list").validate({
+    rules: {
+      list: {
+        required: true
+      }
+    },  
+    messages: {
+      list: {
+        required: "Enter List"     
+      }
+    },
+
+    errorPlacement: function (error, element) {
+      $(element).tooltipster('update', $(error).text());
+      $(element).tooltipster('show');
+    },
+    success: function (label, element) {
+      $(element).tooltipster('hide');
+    }
+  });
+
   // Tooltipster Validation for Share Email
   $('.share-email input[type="email"]').tooltipster({ 
     trigger: 'custom', // default is 'hover' which is no good here
@@ -191,6 +219,10 @@ $(function() {
     $('#editName').modal('show');
   });
 
+  $(window).load(function(){
+    $('#editItem').modal('show');
+  });
+
   // Deletes a User's Account
   $('#deleteName').on('click', function(event) {
     if (!confirm("Are you sure you want to Delete your Account?")) {
@@ -201,6 +233,13 @@ $(function() {
   // Deletes a Specific List
   $('#deleteList').on('click', function(event) {
     if (!confirm("Are you sure you want to Delete this List?")) {
+      event.preventDefault();
+    }
+  });
+
+  // CLears Items on a Specific List
+  $('#clearList').on('click', function(event) {
+    if (!confirm("Are you sure you want to Clear ALL Items on this List?")) {
       event.preventDefault();
     }
   });

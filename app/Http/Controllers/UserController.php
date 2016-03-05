@@ -7,7 +7,6 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Input;
 use App\User;
-//use App\Users;
 use App\MyList;
 use App\Share;
 use Auth;
@@ -15,18 +14,14 @@ use Validator;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\ViewErrorBag;
 
-class UserController extends Controller
-{
-  
-  public function index() {
+class UserController extends Controller {
 
-		return view('users.index');
-	}
-    
   public function edit($id) {
+
     $newname = User::findOrFail($id);
 
     return view('users.edit')->withNewname($newname);
+
   }
 
   public function update(Request $request, $id) {
@@ -39,14 +34,13 @@ class UserController extends Controller
       return redirect('/home')->withErrors($validator)->withInput();
     }
 
-    $newname = $request->input('name');
-    $id = Auth::user()->id;
-    $insert = User::findOrFail($id);
+    $insert = User::findOrFail(Auth::user()->id);
     $insert->id = $id;
-    $insert->name = $newname;
+    $insert->name = $request->input('name');
     $insert->update();
 
-    return redirect('/home');
+    return redirect('/profile');
+
   }
 
   public function destroy($id)	{
@@ -54,5 +48,7 @@ class UserController extends Controller
   	  	$user = User::findOrFail($id)->delete();
 		
 		return redirect('/')->withMessage('Account Deleted');
+
   }
+  
 }

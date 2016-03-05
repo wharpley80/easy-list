@@ -2,19 +2,6 @@
 
 /*
 |--------------------------------------------------------------------------
-| Routes File
-|--------------------------------------------------------------------------
-|
-| Here is where you will register all of the routes in an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
-
-
-
-/*
-|--------------------------------------------------------------------------
 | Application Routes
 |--------------------------------------------------------------------------
 |
@@ -31,26 +18,50 @@ Route::group(['middleware' => 'web'], function () {
     	return view('welcome');
 		});
 
+		Route::get('test', function()
+{
+	
+    dd(Config::get('mail'));
+});
+
+	  Route::get('/profile' , [
+    	'as' => 'profile', 'uses' => 'HomeController@profile'
+		]);
+
     Route::get('/home', 'HomeController@index');
-    Route::resource('users', 'UserController');
-    Route::resource('shares', 'ShareController');
+
+    Route::resource('users', 'UserController', 
+    	['except' => ['show','store','index','create']]);
+
+    Route::delete('shares/{id}' , [
+    	'as' => 'shares.clear', 'uses' => 'ShareController@clear'
+		]);
+
+    Route::resource('shares', 'ShareController',
+    	['except' => ['destroy','update','create','edit']]);
+
+    Route::resource('shares.shareitems', 'ShareItemController',
+    	['except' => ['show','index','create']]);
+
     Route::get('lists/{id}/shares' , [
     	'as' => 'lists.share', 'uses' => 'MyListController@share'
 		]);
+
+		Route::delete('lists/{id}/clear' , [
+    	'as' => 'lists.clear', 'uses' => 'MyListController@clear'
+		]);
+
+    Route::resource('lists', 'MyListController',
+    	['except' => 'index']);
+
+    Route::resource('lists.items', 'ListItemController',
+    	['except' => ['show','index','create']]);
     Route::resource('lists', 'MyListController');
 
-/*
-    Route::get('/select', [
-    	'as' => 'select', 'uses' => 'ListsController@showcase'
-    ]);
-
-		Route::post('/home', [
-			'as' => 'lists.showcase', 'uses' => 'ListsController@showcase'
-	  ]);
-/*
-		Route::post('/home', [ 
-			'as' => 'lists.select', 'uses' => 'ListsController@select'
-		]);
-*/
 
 });
+
+
+
+
+

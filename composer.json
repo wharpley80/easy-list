@@ -50,6 +50,8 @@
         "preferred-install": "dist"
     },
     "require": {
-        "laravelcollective/html": "~5.0"
+        "laravelcollective/html": "~5.0",
+        "guzzlehttp/guzzle": "~5.3|~6.0",
+        "php-middleware/request-id": "^3.0.0"
     }
 }

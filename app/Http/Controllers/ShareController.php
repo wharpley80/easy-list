@@ -7,8 +7,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Input;
 use App\User;
-//use App\Users;
 use App\MyList;
+use App\ListItem;
 use App\Share;
 use Auth;
 use Validator;
@@ -17,24 +17,25 @@ use Illuminate\Support\ViewErrorBag;
 
 class ShareController extends Controller  {
 
-  public function index() {
-        
-    $sharelists = \App\Share::orderBy('shareable_id', 'asc')
-        ->get()
-        ->where('share_id', Auth::user()->id)->lists('shareable_id');
-
-        foreach ($sharelists as $sharelist) {
-
-         $mysharelists = \App\MyList::orderBy('list', 'asc')->get()
-        		->where('id', $sharelist);
-        }
-  	//$sharelists = \App\MyList::find(1)->shares;
-    return view('shares.index')->with('mysharelists', $mysharelists);
-  } 
-
-  public function create() {
-
+	public function __construct() {
+    
+    $this->middleware('isShare', ['only' => 'show']);
+  
   }
+
+  public function index() {
+
+		$mysharelists = User::find(Auth::user()->id)
+			->shareList()
+			->orderBy('list')
+			->distinct()
+			->get();
+
+			$sharelists = Share::all()->where('share_id', Auth::user()->id);
+
+    return view('shares.index')->with('mysharelists', $mysharelists)->with('sharelists', $sharelists);
+
+  } 
 
   public function store(Request $request)	{
 
@@ -43,19 +44,22 @@ class ShareController extends Controller  {
     ]);
 
     if ($validator->fails()) {
-
       return redirect('/')->withErrors($validator)->withInput();
-
     }
     
     $email = $request->input('email');
     $emailid = User::all()->where('email', $email)->lists('id');
+    
     foreach ($emailid as $email) {
     	$email_id = $email;
     }
 
     $list = $request->input('list');
-    $listing = MyList::all()->where('list', $list)->where('user_id', Auth::user()->id)->pluck('id');
+    $listing = MyList::all()
+    	->where('list', $list)
+    	->where('user_id', Auth::user()->id)
+    	->pluck('id');
+
     foreach ($listing as $lis) {
     	$list_id = $lis;
     }
@@ -66,15 +70,24 @@ class ShareController extends Controller  {
     $insert->shareable_type = "MyList";
     $insert->save();
 
-    return view('home');
+    return redirect('/home');
 
   }
 
   public function show($id)	{
 
   	$list = MyList::findOrFail($id);
+  	$items = $list->myItems()->get();
 		
-		return view('shares.show')->withList($list);
+		return view('shares.show')->withList($list)->withItems($items);
+
+  }
+
+  public function clear($id) {
+
+  	ListItem::where('my_list_id', $id)->delete();
+
+  	return redirect()->route('shares.show', [$id]);
 
   }
 

@@ -4,10 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Share extends Model
-{
-    public function shareable() {
+class Share extends Model {
+/*
+	public function users() {
+		return $this->belongsTo('User');
+	}
+  */  
+  public function shareable() {
+  	return $this->morphTo();
+  }
 
-    	return $this->morphTo();
-    }
 }
