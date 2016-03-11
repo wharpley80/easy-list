@@ -12,51 +12,63 @@
 */
 
 Route::group(['middleware' => 'web'], function () {
+   
     Route::auth();
 
     Route::get('/', function () {
     	return view('welcome');
 		});
 
-		Route::get('test', function()
-{
-	
-    dd(Config::get('mail'));
-});
+	Route::get('test', function()
+        {
+	       dd(Config::get('mail'));
+    });
 
-	  Route::get('/profile' , [
+	Route::get('/profile' , [
     	'as' => 'profile', 'uses' => 'HomeController@profile'
-		]);
+	]);
 
     Route::get('/home', 'HomeController@index');
 
     Route::resource('users', 'UserController', 
-    	['except' => ['show','store','index','create']]);
+    	['except' => ['show','store','index','create']]
+    );
+
+    Route::get('lists/{id}/shares' , [
+        'as' => 'lists.share', 'uses' => 'MyListController@share'
+    ]);
+
+    Route::post('lists/{id}/save' , [
+        'as' => 'lists.save', 'uses' => 'MyListController@save'
+    ]);
+
+    Route::delete('lists/{id}/clear' , [
+        'as' => 'lists.clear', 'uses' => 'MyListController@clear'
+    ]);
+
+    Route::resource('lists', 'MyListController',
+        ['except' => 'index']
+    );
+
+    Route::resource('lists.items', 'ListItemController',
+        ['except' => ['show','index','create']]
+    );
+    
+    Route::resource('lists', 'MyListController');
 
     Route::delete('shares/{id}' , [
     	'as' => 'shares.clear', 'uses' => 'ShareController@clear'
-		]);
+	]);
 
     Route::resource('shares', 'ShareController',
-    	['except' => ['destroy','update','create','edit']]);
+    	['except' => ['destroy','update','edit','create','store']]
+    );
 
     Route::resource('shares.shareitems', 'ShareItemController',
-    	['except' => ['show','index','create']]);
+    	['except' => ['show','index','create']]
+    );
 
-    Route::get('lists/{id}/shares' , [
-    	'as' => 'lists.share', 'uses' => 'MyListController@share'
-		]);
 
-		Route::delete('lists/{id}/clear' , [
-    	'as' => 'lists.clear', 'uses' => 'MyListController@clear'
-		]);
-
-    Route::resource('lists', 'MyListController',
-    	['except' => 'index']);
-
-    Route::resource('lists.items', 'ListItemController',
-    	['except' => ['show','index','create']]);
-    Route::resource('lists', 'MyListController');
 
 
 });

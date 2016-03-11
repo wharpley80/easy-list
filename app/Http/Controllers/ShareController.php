@@ -37,43 +37,6 @@ class ShareController extends Controller  {
 
   } 
 
-  public function store(Request $request)	{
-
-  	$validator = Validator::make($request->all(), [
-      'email' => 'required'
-    ]);
-
-    if ($validator->fails()) {
-      return redirect('/')->withErrors($validator)->withInput();
-    }
-    
-    $email = $request->input('email');
-    $emailid = User::all()->where('email', $email)->lists('id');
-    
-    foreach ($emailid as $email) {
-    	$email_id = $email;
-    }
-
-    $list = $request->input('list');
-    $listing = MyList::all()
-    	->where('list', $list)
-    	->where('user_id', Auth::user()->id)
-    	->pluck('id');
-
-    foreach ($listing as $lis) {
-    	$list_id = $lis;
-    }
- 
-    $insert = new \App\Share();
-    $insert->share_id = $email_id;
-    $insert->shareable_id = $list_id;
-    $insert->shareable_type = "MyList";
-    $insert->save();
-
-    return redirect('/home');
-
-  }
-
   public function show($id)	{
 
   	$list = MyList::findOrFail($id);

@@ -17,7 +17,8 @@
             <h4 class="modal-title">Enter the Email of the User you'd like to Share with.</h4>
           </div>
           <div class="modal-body">
-            {!! Form::model($list, [ 'route' => [ 'shares.store', $list->id, ], 'method' => 'post', 'class' => 'share-email' ]) !!}
+
+            {!! Form::model($list, [ 'route' => [ 'lists.save', $list->id, ], 'method' => 'post', 'class' => 'share-email' ]) !!}
               {!! csrf_field() !!}
               <div class="form-group">
                 {!! Form::email('email', null, array('class' => 'form-control input-lg', 'placeholder' => 'Email', 'autofocus' => 'autofocus') ) !!}

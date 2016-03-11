@@ -106,6 +106,34 @@ class MyListController extends Controller  {
 
   }
 
+  public function save(Request $request, $id)  {
+
+    $validator = Validator::make($request->all(), [
+      'email' => 'required'
+    ]);
+
+    if ($validator->fails()) {
+      return redirect('/')->withErrors($validator)->withInput();
+    }
+    
+    $email = $request->input('email');
+    $emailid = User::all()->where('email', $email)->lists('id');
+    
+    foreach ($emailid as $email) {
+      $email_id = $email;
+    }
+
+    $insert = new \App\Share();
+    $insert->share_id = $email_id;
+    $insert->shareable_id = $id;
+    $insert->shareable_type = "MyList";
+    $insert->save();
+
+
+    return redirect('/home');
+
+  }
+
   public function clear($id) {
 
   	ListItem::where('my_list_id', $id)->delete();
