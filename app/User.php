@@ -28,11 +28,7 @@ class User extends Authenticatable
   public function mylisting() {
     return $this->hasMany('App\MyList')->orderBy('list', 'asc');
   }
-/*
-  public function listid() {
-    return $this->hasMany('App\MyList')->where('user_id', Auth::user()->id)->where('id', 15);
-  }
-*/
+
   public function shareList() {
     return $this->belongsToMany('App\MyList', 'shares', 'share_id', 'shareable_id');
   }
@@ -41,10 +37,9 @@ class User extends Authenticatable
     return $this->hasMany('App\MyList')->where('user_id', Auth::user()->id);
   }
 
-  public function roleShare()
-    {
-        return $this->morphMany('App\Share', 'shareable');
-    }
+  public function roleShare() {
+    return $this->morphMany('App\Share', 'shareable');
+  }
 
 }
 

@@ -93,14 +93,6 @@ a.navbar-text:hover {
       rgba(142, 109, 180, 0.95)
     ),
     url('../img/stucco.jpg') repeat-y;
-/*
-  background: 
-    linear-gradient(
-      rgba(142, 109, 180, 0.92), 
-      rgba(142, 109, 180, 0.92)
-    ),
-    url('../img/6a00d83451b3d969e201538f57d22f970b-500wi.jpg') no-repeat;
-    */
   background-size: 100%;
   padding: 100px 100px 100px 50px;
 }
@@ -228,7 +220,7 @@ span.glyphicon {
   width: 4px;
   height: 400%;
   top: 0;
-  left: 30px;
+  left: 35px;
   bottom: 0;
   border: 1px solid;
   border-color: transparent #efe4e4;

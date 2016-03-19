@@ -37,12 +37,12 @@ class ShareController extends Controller  {
 
   } 
 
-  public function show($id)	{
+  public function show(Request $request, $id)	{
 
   	$list = MyList::findOrFail($id);
   	$items = $list->myItems()->get();
-		
-		return view('shares.show')->withList($list)->withItems($items);
+
+  return view('shares.show')->withList($list)->withItems($items);
 
   }
 
