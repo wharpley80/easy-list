@@ -43,9 +43,16 @@ class UserController extends Controller {
 
   }
 
-  public function destroy($id)	{
+  public function destroy($id) {
 
-  	  	$user = User::findOrFail($id)->delete();
+    $lists = MyList::all()->where('user_id', Auth::user()->id);
+
+    foreach ($lists as $list) {
+      $list_id = $list->id;
+      MyList::findOrFail($list_id)->delete();
+    }
+    	
+    User::findOrFail($id)->delete();
 		
 		return redirect('/')->withMessage('Account Deleted');
 

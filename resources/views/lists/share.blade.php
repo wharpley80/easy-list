@@ -6,7 +6,7 @@
     <div class="container">
       <h1>{{{ $list->list }}}</h1>
       <p class="lead">
-        {{ link_to_route('lists.share', 'Share List', [$list->id], ['class' => 'btn btn-default btn-sm']) }}
+        <a href="{{ URL::route('lists.share', [$list->id]) }}" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-transfer"></span>Share List</a>
       </p>
     </div>
     <div class="modal" id="shareList">

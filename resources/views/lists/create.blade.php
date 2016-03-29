@@ -4,7 +4,7 @@
 
   <div class="list-page">
     <div class="container">
-      <p class="lead">Select or Create a List</p>
+      <p class="lead">Create a List</p>
       <p class="lead">
         <a class="btn btn-default btn-sm" href="#createList" data-toggle="modal"><span class="glyphicon glyphicon-pencil"></span>New List
         </a>

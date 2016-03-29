@@ -28,7 +28,7 @@
       </div>
     </div>
     <div class="container">
-      {{ link_to_route('users.edit', 'Edit UserName', [Auth::user()->id], ['class' => 'btn btn-default btn-sm']) }}
+      <a href="{{ URL::route('users.edit', [Auth::user()->id]) }}" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-edit"></span>Edit UserName</a>
     </div>
   </div>
 

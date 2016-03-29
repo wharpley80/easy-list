@@ -4,11 +4,10 @@
 
   <div class="list-page">
     <div class="container">
-      <p class="lead">First Select or Create a New List. </br>
-                      Then Build It Up!</p>
+      <p class="lead">Select one of your Shared Lists</p>
       <p class="lead">
         <a class="btn btn-default btn-sm" href="{{ URL::route('lists.create') }}" data-toggle="modal"><span class="glyphicon glyphicon-pencil"></span>New List</a>
-        <a class="btn btn-default btn-sm" href="{{ URL('/home') }}">My Lists
+        <a class="btn btn-default btn-sm" href="{{ URL('/home') }}"><span class="glyphicon glyphicon-user"></span>My Lists
         </a>
       </p>
     </div>

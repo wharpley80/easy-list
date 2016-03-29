@@ -41,6 +41,12 @@ class User extends Authenticatable
     return $this->morphMany('App\Share', 'shareable');
   }
 
+  public function delete() {
+    MyList::where('user_id', $this->id)->delete();
+    Share::where('share_id', $this->id)->delete();
+    parent::delete();
+  }
+
 }
 
 

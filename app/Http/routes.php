@@ -19,10 +19,9 @@ Route::group(['middleware' => 'web'], function () {
     	return view('welcome');
 		});
 
-	Route::get('test', function()
-        {
-	       dd(Config::get('mail'));
-    });
+	Route::get('/test', [
+	   'as' => 'test', 'uses' => 'HomeController@test'
+    ]);
 
 	Route::get('/profile' , [
     	'as' => 'profile', 'uses' => 'HomeController@profile'
@@ -67,9 +66,6 @@ Route::group(['middleware' => 'web'], function () {
     Route::resource('shares.shareitems', 'ShareItemController',
     	['except' => ['show','index','create']]
     );
-
-
-
 
 });
 

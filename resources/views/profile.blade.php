@@ -6,7 +6,7 @@
     <div class="container">
     	<p class="lead">Make Profile Adjustments.</p>
 
-    	{{ link_to_route('users.edit', 'Edit UserName', [Auth::user()->id], ['class' => 'btn btn-default btn-sm']) }}
+    	<a href="{{ URL::route('users.edit', [Auth::user()->id]) }}" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-edit"></span>Edit UserName</a>
 
     	{!! Form::model(Auth::user(), [ 'route' => [ 'users.destroy', Auth::user()->id ], 'method' => 'delete', 'class' => 'delete-form' ]) !!}
         {!! Form::button('<span class="glyphicon glyphicon-trash"></span>Delete My Account', ['type' => 'submit', 'class' => 'btn btn-default btn-sm', 'id' => 'deleteName']) !!}

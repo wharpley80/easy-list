@@ -10,9 +10,9 @@
         {!! Form::button('<span class="glyphicon glyphicon-erase"></span>Clear List', ['type' => 'submit', 'class' => 'btn btn-default btn-sm', 'id' => 'clearList']) !!}
       {!! Form::close() !!}
 
-      {{ link_to_route('lists.share', 'Share List', [$list->id], ['class' => 'btn btn-default btn-sm']) }}
+      <a href="{{ URL::route('lists.share', [$list->id]) }}" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-transfer"></span>Share List</a>
 
-      {{ link_to_route('lists.edit', 'Edit List', [$list->id], ['class' => 'btn btn-default btn-sm']) }}
+      <a href="{{ URL::route('lists.edit', [$list->id]) }}" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-edit"></span>Edit List</a>
 
       {!! Form::model($list, [ 'route' => [ 'lists.destroy', $list->id ], 'method' => 'delete', 'class' => 'delete-form' ]) !!}
         {!! Form::button('<span class="glyphicon glyphicon-trash"></span>Delete List', ['type' => 'submit', 'class' => 'btn btn-default btn-sm', 'id' => 'deleteList']) !!}

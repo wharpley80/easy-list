@@ -10,7 +10,7 @@
       <p class="lead">
         <a class="btn btn-default btn-sm" href="{{ URL::route('lists.create') }}" data-toggle="modal"><span class="glyphicon glyphicon-pencil"></span>New List
         </a>
-        <a class="btn btn-default btn-sm" href="{{ URL::route('shares.index') }}">Shared Lists
+        <a class="btn btn-default btn-sm" href="{{ URL::route('shares.index') }}"><span class="glyphicon glyphicon-transfer"></span>Shared Lists
         </a>
       </p>
     </div>
