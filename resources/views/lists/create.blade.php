@@ -14,7 +14,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Enter the name of your new List!</h4>
+            <h4 class="modal-title">Enter the name of your new list.</h4>
           </div>
           <div class="modal-body">
             {!! Form::open( array('route' => 'lists.store', 'class' => 'create-list') ) !!}
@@ -22,7 +22,7 @@
               <div class="form-group">
                 {!! Form::text('list', null, array('class' => 'form-control input-lg', 'placeholder' => 'List Name', 'autofocus' => 'autofocus') ) !!}
               </div>
-              {!! Form::submit('submit', array('class' => 'btn btn-primary') ) !!}
+              {!! Form::submit('Create', array('class' => 'btn btn-primary') ) !!}
             {!! Form::close() !!}
           </div>
         </div>

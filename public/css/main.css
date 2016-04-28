@@ -98,8 +98,8 @@ a.navbar-text:hover {
 }
 
 .device {
-  width: 300px;
-  height: 400px;
+  width: 400px;
+  height: 600px;
   background: url('../img/Easy List Maker.png') no-repeat;
   background-size: 100%;
   float: none;
@@ -132,6 +132,14 @@ a.navbar-text:hover {
 .item-form {
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+#item {
+  width: 40%;
+}
+
+#item-label {
+  display: block;
 }
 
 /*****************************
@@ -374,6 +382,10 @@ footer {
   }
 
   .paper {
+    width: 90%;
+  }
+
+  #item {
     width: 90%;
   }
 

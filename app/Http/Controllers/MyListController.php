@@ -15,20 +15,21 @@ use Validator;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\ViewErrorBag;
 
-class MyListController extends Controller  {
+class MyListController extends Controller  
+{
 
-  public function __construct() {
+  public function __construct() 
+  {
     $this->middleware('isOwner', ['only' => 'show']);
   }
 
-  public function create() {
-
+  public function create() 
+  {
   	return view('lists.create');
-
 	}
 
-  public function store(Request $request) {
-    
+  public function store(Request $request) 
+  {
     $validator = Validator::make($request->all(), [
       'list' => 'required'
     ]);
@@ -42,8 +43,8 @@ class MyListController extends Controller  {
     $insert->list = $request->input('list');
     $insert->admin = 1;
     $insert->save();
-
     $newlist = \App\MyList::all();
+
     foreach ($newlist as $new) {
       $newid = $new->id;
     }
@@ -51,28 +52,25 @@ class MyListController extends Controller  {
     $list = MyList::findOrFail($newid);	
 
     return redirect()->route('lists.show', array($newid));
-
   }
 
-  public function show($id)	{
-
+  public function show($id)	
+  {
   	$list = MyList::findOrFail($id);
 		$items = $list->myItems()->get();
 
 		return view('lists.show')->withList($list)->withItems($items);
-
   }
 
-  public function edit($id)	{
-
+  public function edit($id)	
+  {
   	$list = MyList::findOrFail($id);
 
   	return view('lists.edit')->withList($list);
-
   }
 
-  public function update(Request $request, $id)	{
-
+  public function update(Request $request, $id)	
+  {
   	$validator = Validator::make($request->all(), [
       'list' => 'required'
     ]);
@@ -85,7 +83,6 @@ class MyListController extends Controller  {
     $insert->user_id = Auth::user()->id;
     $insert->list = $request->input('list');
     $insert->update();
-
     $newlist = \App\MyList::all();
 
     foreach ($newlist as $new) {
@@ -95,19 +92,17 @@ class MyListController extends Controller  {
     $list = MyList::findOrFail($newid);
 
     return redirect()->route('lists.show', [$id])->withList($list);
-
   }
 
-  public function share($id) {
-
+  public function share($id) 
+  {
   	$list = MyList::findOrFail($id);
 
 		return view('lists.share')->withList($list);
-
   }
 
-  public function save(Request $request, $id)  {
-
+  public function save(Request $request, $id)  
+  {
     $validator = Validator::make($request->all(), [
       'email' => 'required'
     ]);
@@ -129,25 +124,21 @@ class MyListController extends Controller  {
     $insert->shareable_type = "MyList";
     $insert->save();
 
-
     return redirect('/home');
-
   }
 
-  public function clear($id) {
-
+  public function clear($id) 
+  {
   	ListItem::where('my_list_id', $id)->delete();
 
   	return redirect()->route('lists.show', [$id]);
-
   }
 
-  public function destroy($id) {
-
+  public function destroy($id) 
+  {
   	MyList::findOrFail($id)->delete();
 		
 		return redirect('/home')->withMessage('List Deleted');
-
   }
 
 }

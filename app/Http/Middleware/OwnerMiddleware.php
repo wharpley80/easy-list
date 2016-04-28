@@ -9,7 +9,8 @@ use App\User;
 use App\MyList;
 use Illuminate\Support\Facades\Auth;
 
-class OwnerMiddleware {
+class OwnerMiddleware 
+{
   /**
    * Handle an incoming request.
    *
@@ -18,7 +19,8 @@ class OwnerMiddleware {
    * @return mixed
    */
 
-  public function handle($request, Closure $next) {
+  public function handle($request, Closure $next) 
+  {
     $users = User::findOrFail(Auth::user()->id);
     $id = $request->route('lists'); 
 
@@ -33,8 +35,7 @@ class OwnerMiddleware {
 
     }
 
-    return redirect('/home');
-                  
+    return redirect('/home');               
   }
 
 }

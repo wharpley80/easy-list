@@ -20,8 +20,9 @@ class HomeController extends Controller  {
      *
      * @return void
      */
-    public function __construct() {
-        $this->middleware('auth');
+    public function __construct() 
+    {
+      $this->middleware('auth');
     }
 
     /**
@@ -29,24 +30,21 @@ class HomeController extends Controller  {
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
-
+    public function index() 
+    {
       $user = User::findOrFail(Auth::user()->id);
 
-
       return view('home')->with('user', $user);
-
     }
 
-    public function profile() {
-
+    public function profile() 
+    {
       return view('profile');
-
     }
 
-    public function test() {
-        return view('test');
+    public function test() 
+    {
+      return view('test');
     }
-
-    
+  
 }

@@ -1,11 +1,13 @@
 @extends('layouts.app')
 
+
+
 @section('content')
 
   <div class="list-page">
     <div class="container">
-      <p class="lead">First Select or Create a New List. </br>
-                      Then Build It Up!
+      <p class="lead">First select or create a new list. </br>
+                      Then build it up.
       </p>
       <p class="lead">
         <a class="btn btn-default btn-sm" href="{{ URL::route('lists.create') }}" data-toggle="modal"><span class="glyphicon glyphicon-pencil"></span>New List

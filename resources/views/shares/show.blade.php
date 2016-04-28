@@ -5,12 +5,15 @@
   <div class="list-page">
     <div class="container">
       <h1>{{{ $list->list }}}</h1>
-      <p class="lead" id="mylead">Add Items to this Shared List!</p>
       {!! Form::open( array('route' => ['shares.shareitems.store', $list->id], 'class' => 'item-form') ) !!}
         {!! csrf_field() !!}
+        <div>
           {!! Form::label('item', 'Add Item', array('class' => 'my-label')) !!}
+        </div>
+        <div class="form-group">
           {!! Form::text('item', null, array( 'placeholder' => 'Enter Item', 'autofocus' => 'autofocus') ) !!}
-        {!! Form::submit('submit', array('class' => 'btn btn-primary btn-sm', 'id' => 'submit') ) !!}
+        </div>
+        {!! Form::submit('Add Items', array('class' => 'btn btn-primary btn-sm', 'id' => 'submit') ) !!}
       {!! Form::close() !!}
     </div>
     <div class="paper">

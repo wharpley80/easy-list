@@ -7,7 +7,7 @@ $(function() {
     position: 'right'  // display the tips to the right of the element
   });
 
-  $(".signin-form").validate({
+  $('.signin-form').validate({
     rules: {
       username: {
         required: true
@@ -43,7 +43,7 @@ $(function() {
     position: 'right'  // display the tips to the right of the element
   });
 
-  $(".signup-form").validate({
+  $('.signup-form').validate({
     rules: {
       email: {
         required: true
@@ -91,7 +91,7 @@ $(function() {
     position: 'right'  // display the tips to the right of the element
   });
 
-  $(".item-form").validate({
+  $('.item-form').validate({
     rules: {
       list: {
         required: true,
@@ -118,7 +118,7 @@ $(function() {
     position: 'right'  // display the tips to the right of the element
   });
 
-  $(".edit-name").validate({
+  $('.edit-name').validate({
     rules: {
       name: {
         required: true
@@ -174,7 +174,7 @@ $(function() {
     position: 'right'  // display the tips to the right of the element
   });
 
-  $(".share-email").validate({
+  $('.share-email').validate({
     rules: {
       email: {
         required: true
@@ -195,31 +195,14 @@ $(function() {
     }
   });
 
-  $(window).load(function(){
+  // Pops up Modal Windows
+  $( function() {
     $('#authorize').modal('show');
-  });
-
-  $(window).load(function(){
     $('#register').modal('show');
-  });
-
-  $(window).load(function(){
     $('#createList').modal('show');
-  });
-
-  $(window).load(function(){
     $('#shareList').modal('show');
-  });
-
-  $(window).load(function(){
     $('#editList').modal('show');
-  });
-
-  $(window).load(function(){
     $('#editName').modal('show');
-  });
-
-  $(window).load(function(){
     $('#editItem').modal('show');
   });
 
@@ -244,14 +227,13 @@ $(function() {
     }
   });
 
-  // Edit Username pop-up
-  $(function() {
   function deselect(j) {
     $('.tog').slideFadeToggle(function() {
       j.removeClass('selected');
-    });    
+    });
   }
- 
+
+  // Edit Username pop-up
   $('#changename').on('click', function(event) {
     event.preventDefault();
 
@@ -267,75 +249,9 @@ $(function() {
     event.preventDefault();
     deselect($('#changename'));
    });
+
+  $.fn.slideFadeToggle = function(easing, callback) {
+    return this.animate({ opacity: 'toggle', height: 'toggle' }, 'fast', easing, callback);
+  };
+
 });
-
-$.fn.slideFadeToggle = function(easing, callback) {
-  return this.animate({ opacity: 'toggle', height: 'toggle' }, 'fast', easing, callback);
-};
-
-  // Clears a User's entire list.
-  $('a#clear').on('click', function(event) {
-    event.preventDefault();
-    
-    if (confirm("Are you sure you want to clear your list?")) {
-      var items = $('h1').closest('div');
-      var id = items.find('span').data('id');
-      var clr = $('h2').closest('div');
-      var lis = clr.find('span').data('lis');
-      $('.fulllist').fadeOut();
-    
-      $.ajax({
-        type: "POST",
-        url: "../delete_items.php",
-        data: {
-          id: id,
-          lis: lis
-        },
-      });
-     } 
-   }); 
-   
-  // Removes a specific item.
-  $('a.byebye').on('click', function( event ) {
-    event.preventDefault();
-    
-    var parent = $(this).closest('div');
-    var id = parent.find('span').data('id');
-    parent.fadeOut();
-
-    $.ajax({
-      type: "POST",
-      url: "../delete_row.php",
-      data: {
-        id: id
-      },
-    });
-  });  
-});
-
-
-
-
-// Deletes Username from list.
-$(function() {
-  $('a#deletename').on('click', function(event) {
-    event.preventDefault();
-  
-    if (confirm("Are you sure you want to delete this shopper?")) {
-      var erase = $('h1').closest('div');
-      var ids = erase.find('span').data('id');
-      
-      $.ajax({
-        type: "POST",
-        url: "../delete_name.php",
-        data: {
-          ids: ids
-        },	
-		    success: function() {
-		      window.location.href = '../signin/';
-		    }
-      });
-    }
-  });
-});
-

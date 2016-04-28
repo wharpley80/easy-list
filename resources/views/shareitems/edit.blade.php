@@ -4,7 +4,7 @@
 
 <div class="list-page">
   <div class="container">
-  	<p class="lead">Back to Your List.</p>
+  	<p class="lead">Back to your list.</p>
     <p class="lead">
 			{{ link_to_route('shares.show', 'Back', [$my_list_id], ['class' => 'btn btn-default btn-sm']) }} 
 		</p>
@@ -13,7 +13,7 @@
 		    <div class="modal-content">
 		      <div class="modal-header">
 		        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		        <h4 class="modal-title">Edit this Item!</h4>
+		        <h4 class="modal-title">Edit this item.</h4>
 		      </div>
 		      <div class="modal-body">
 		        {!! Form::model($list_item, [ 'route' => [ 'shares.shareitems.update', $my_list_id, $list_item->id ], 'method' => 'put', 'class' => 'signin-form' ]) !!}

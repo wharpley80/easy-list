@@ -21,12 +21,15 @@
     <div class="list-container">
       <div class="lead-container">
         <h1>{{{ $list->list }}}</h1>
-        <p class="lead" id="mylead">Add Items to Your List!</p>
         {!! Form::open( array('route' => ['lists.items.store', $list->id], 'class' => 'item-form') ) !!}
           {!! csrf_field() !!}
+          <div>
             {!! Form::label('item', 'Add Item') !!}
+          </div>
+          <div class="form-group">
             {!! Form::text('item', null, array( 'placeholder' => 'Enter Item', 'autofocus' => 'autofocus') ) !!}
-          {!! Form::submit('submit', array('class' => 'btn btn-primary btn-sm', 'id' => 'submit') ) !!}
+          </div>
+          {!! Form::submit('Add Item', array('class' => 'btn btn-primary btn-sm', 'id' => 'submit') ) !!}
         {!! Form::close() !!}
       </div>
       <div class="paper">

@@ -14,18 +14,18 @@ use Validator;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\ViewErrorBag;
 
-class UserController extends Controller {
+class UserController extends Controller 
+{
 
-  public function edit($id) {
-
+  public function edit($id) 
+  {
     $newname = User::findOrFail($id);
 
     return view('users.edit')->withNewname($newname);
-
   }
 
-  public function update(Request $request, $id) {
-
+  public function update(Request $request, $id) 
+  {
   	$validator = Validator::make($request->all(), [
       'name' => 'required|min:5'
     ]);
@@ -40,11 +40,10 @@ class UserController extends Controller {
     $insert->update();
 
     return redirect('/profile');
-
   }
 
-  public function destroy($id) {
-
+  public function destroy($id) 
+  {
     $lists = MyList::all()->where('user_id', Auth::user()->id);
 
     foreach ($lists as $list) {
@@ -55,7 +54,6 @@ class UserController extends Controller {
     User::findOrFail($id)->delete();
 		
 		return redirect('/')->withMessage('Account Deleted');
-
   }
   
 }

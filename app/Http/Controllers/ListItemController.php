@@ -15,11 +15,11 @@ use Validator;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\ViewErrorBag;
 
+class ListItemController extends Controller 
+{
 
-class ListItemController extends Controller {
-
-  public function store($list_id, Request $request) {
-
+  public function store($list_id, Request $request) 
+  {
   	$list = MyList::findOrFail($list_id);	
 
   	$validator = Validator::make($request->all(), [
@@ -35,19 +35,17 @@ class ListItemController extends Controller {
   	$list->myItems()->save($item);
 
   	return redirect()->route('lists.show', [$list_id]);
-
   }
 
-  public function edit($list_id, $item_id) {
-
+  public function edit($list_id, $item_id) 
+  {
   	$item = ListItem::findOrFail($item_id);
 
   	return view('items.edit')->withListItem($item)->withMyListId($list_id);
-
   }
 
-  public function update(Request $request, $list_id, $item_id) {
-
+  public function update(Request $request, $list_id, $item_id) 
+  {
   	$validator = Validator::make($request->all(), [
       'item' => 'required'
     ]);
@@ -61,15 +59,13 @@ class ListItemController extends Controller {
     $item->update();
 
     return redirect()->route('lists.show', [$list_id]);
-
   }
 
-  public function destroy($list_id, $item_id) {
-
+  public function destroy($list_id, $item_id) 
+  {
   	$item = \App\ListItem::findOrFail($item_id)->delete();
 
   	return redirect()->route('lists.show', [$list_id]);
-
   }
 
 }

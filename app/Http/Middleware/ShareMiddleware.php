@@ -10,7 +10,8 @@ use App\MyList;
 use App\Share;
 use Illuminate\Support\Facades\Auth;
 
-class ShareMiddleware {   
+class ShareMiddleware 
+{   
   /**
    * Handle an incoming request.
    *
@@ -19,14 +20,14 @@ class ShareMiddleware {
    * @return mixed
    */
 
-    public function handle($request, Closure $next) {
+    public function handle($request, Closure $next) 
+    {
 
       $list_id = (int)$request->route('shares');
       $id = Auth::user()->id;
       $sharelists = Share::all()->where('share_id', $id)->where('shareable_id', $list_id);
 
       foreach ($sharelists as $share) {
-        
         if (!empty($share)) {
           return $next($request);
         }
@@ -34,7 +35,6 @@ class ShareMiddleware {
       }
   
       return redirect('/shares');
-
     }
 
 }

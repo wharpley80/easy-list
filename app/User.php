@@ -25,29 +25,31 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-  public function mylisting() {
+  public function mylisting() 
+  {
     return $this->hasMany('App\MyList')->orderBy('list', 'asc');
   }
 
-  public function shareList() {
+  public function shareList() 
+  {
     return $this->belongsToMany('App\MyList', 'shares', 'share_id', 'shareable_id');
   }
 
-  public function myrole() {
+  public function myrole() 
+  {
     return $this->hasMany('App\MyList')->where('user_id', Auth::user()->id);
   }
 
-  public function roleShare() {
+  public function roleShare() 
+  {
     return $this->morphMany('App\Share', 'shareable');
   }
 
-  public function delete() {
+  public function delete() 
+  {
     MyList::where('user_id', $this->id)->delete();
     Share::where('share_id', $this->id)->delete();
     parent::delete();
   }
 
 }
-
-
-
