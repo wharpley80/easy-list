@@ -23,8 +23,8 @@ class ShareMiddleware
     public function handle($request, Closure $next) 
     {
 
-      $list_id = (int)$request->route('shares');
-      $id = Auth::user()->id;
+      $list_id = $request->route('shares');
+      $id = strval(Auth::user()->id);
       $sharelists = Share::all()->where('share_id', $id)->where('shareable_id', $list_id);
 
       foreach ($sharelists as $share) {

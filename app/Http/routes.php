@@ -16,8 +16,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
     Route::get('/', function () {
-    	return view('welcome');
-		});
+        return view('welcome');
+	});
 
 	Route::get('/test', [
 	   'as' => 'test', 'uses' => 'HomeController@test'

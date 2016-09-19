@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}" />
+  <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
   <link href="http://fonts.googleapis.com/css?family=Lakki+Reddy" rel="stylesheet" type="text/css"> 
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300|Raleway" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
@@ -70,7 +71,7 @@
 
   <footer>
     <a href="http://williamharpleyportfolio.com/">
-      <p class="designer">&copy; 2016 Design by William Harpley.</p>
+      <p class="designer">&copy; 2016 William Harpley.</p>
     </a>
   </footer>
   <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
